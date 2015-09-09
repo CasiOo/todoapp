@@ -1,0 +1,19 @@
+body {
+	background: #fff;
+	font-family: 'Open Sans', sans-serif;
+}
+.container {
+	display: block;
+	width: 400px;
+	text-align:center;
+}
+
+button {
+	margin:3px;
+	}
+ul {
+	list-style:none;
+	}
+#completedTasks li {
+	text-decoration: line-through;
+}
