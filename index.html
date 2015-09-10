@@ -7,7 +7,8 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">   
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript" src="js/todo.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -15,7 +16,7 @@
 		<h3>ADD NEW TASK:</h3>
 		<p>
 			<input id="newTask" type="text"></input>
-			<button>Add</button>
+			<button onclick="add_new_todo()">Add</button>
 		</p>
 
 		<h3>TODO:</h3>
@@ -28,6 +29,6 @@
 			<li><input type="checkbox" checked>Example task 3<button class="edit">Edit</button><button class="delete">Delete</button></li>
 			<li><input type="checkbox" checked>Example task 4<button class="edit">Edit</button><button class="delete">Delete</button></li>
 		</ul>
-	</div>	
+	</div>
 </body>
 </html>
