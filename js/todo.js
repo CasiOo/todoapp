@@ -8,7 +8,6 @@ function Todo ( value ) {
 	this.value = value;
 };
 
-
 var todoApp = {
         // array with all the todos
 	list_of_todos: [],
@@ -21,6 +20,7 @@ var todoApp = {
 		todoApp.add_new_todo(currentTodo);
 		todoApp.todoToHTML(currentTodo);
 		todoApp.saveTodo();
+                new_task.value = "";
 	},
         /*
          * 
@@ -32,33 +32,11 @@ var todoApp = {
 	},
         /*
          * Shows all the current todos
-         * Currently not working!
+         * Currently not working when using with document.onload()! Gives an AJAX error
          */
 	show_todos: function() {
-		for ( var x = 0; x < todoApp.list_of_todos.length; x++) {
-			var todoItem = document.createElement("li");
-			var todoItemText = document.createTextNode(todoApp.list_of_todos[x].value);
-			var todoContainer = document.getElementById("incompleteTasks");
-			var checkBox = document.createElement("input");
-			var editBtn = document.createElement("button");
-			var deleteBtn = document.createElement("button");
-			var editBtnText = document.createTextNode("Edit");
-			var deleteBtnText = document.createTextNode("Delete");
-			
-			deleteBtn.setAttribute("class","delete");
-			deleteBtn.appendChild(deleteBtnText);
-			
-			editBtn.setAttribute("class","edit");
-			editBtn.appendChild(editBtnText);
-			
-			checkBox.setAttribute("type", "checkbox");
-			
-			todoItem.appendChild(checkBox);
-			todoItem.appendChild(todoItemText);
-			todoItem.appendChild(editBtn);
-			todoItem.appendChild(deleteBtn);
-			
-			todoContainer.appendChild(todoItem);
+		for ( var x = 0; x < todoApp.list_of_todos.length; x++) {                 
+                    todoApp.todoToHTML(todoApp.list_of_todos[x]);
 		}
 	},
         /*
