@@ -1,25 +1,39 @@
 // Basic JS for creating TODO's
 // Peanutt / Simon Jang
 
+//Constructor for Firebase API
 var myFirebaseRef = new Firebase("https://todoappjs.firebaseio.com/");
-
+// todo constructor
 function Todo ( value ) {
 	this.value = value;
 };
 
 
 var todoApp = {
+        // array with all the todos
 	list_of_todos: [],
+        /*
+         * Makes a single todo
+         */
 	make_new_todo: function() {
 		var new_task = document.getElementById('newTask');
 		var currentTodo = new Todo(new_task.value);
 		todoApp.add_new_todo(currentTodo);
-		todoApp.todoToHTML();
+		todoApp.todoToHTML(currentTodo);
 		todoApp.saveTodo();
 	},
+        /*
+         * 
+         * @param {type} todo
+         * adds a todo to the array with todos
+         */
 	add_new_todo: function(todo) {
 		todoApp.list_of_todos.push(todo);
 	},
+        /*
+         * Shows all the current todos
+         * Currently not working!
+         */
 	show_todos: function() {
 		for ( var x = 0; x < todoApp.list_of_todos.length; x++) {
 			var todoItem = document.createElement("li");
@@ -47,9 +61,13 @@ var todoApp = {
 			todoContainer.appendChild(todoItem);
 		}
 	},
-	todoToHTML: function() {
+        /*
+         * @param: todo ( Object )
+         * Put a single todo on the page
+         */
+	todoToHTML: function(todo) {
 		var todoItem = document.createElement("li");
-		var todoItemText = document.createTextNode(todoApp.list_of_todos[0].value);
+		var todoItemText = document.createTextNode(todo.value);
 		var todoContainer = document.getElementById("incompleteTasks");
 		var checkBox = document.createElement("input");
 		var editBtn = document.createElement("button");
@@ -72,32 +90,30 @@ var todoApp = {
 			
 		todoContainer.appendChild(todoItem);
 	},
+        /*
+         * Initiates on page load. Binds eventhandlers to HTML elements
+         */
 	init: function() {
 		var addTodoButton = document.getElementById('addTodoBtn');
 		addTodoButton.addEventListener('click', todoApp.make_new_todo, false);
 		todoApp.loadTodo();
 		todoApp.show_todos();
 	},
+        // Saves the array with todos to Firebase in JSON format
 	saveTodo: function() {
 		for ( var x = 0; x < todoApp.list_of_todos.length; x++ ) {
 			myFirebaseRef.set({
-				todo: {
-					todoValue: todoApp.list_of_todos[x].value
-				}
+				todoList: todoApp.list_of_todos				
 			});
 		};
 	},
+        // Loads the JSON data and streams it to the array with all the todos
 	loadTodo: function() {
 		myFirebaseRef.on("value", function(snapshot) {
 			var dataHandler = snapshot.val();
-			for ( var x = 0; x < dataHandler.todo.length; x++) {
-				todoApp.list_of_todos[x] = dataHandler.todo[x];
-				todoApp.list_of_todos[x].value = dataHandler.todo[x].value;
-			}
-		})
+			todoApp.list_of_todos = dataHandler.todoList;
+		});
 	}
-	
-	
 };
 
 document.onload = todoApp.init();
