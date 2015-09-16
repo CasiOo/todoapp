@@ -60,7 +60,7 @@ var todoApp = {
 		editBtn.appendChild(editBtnText);
 		
 		//edits the name of the todo
-		var editTodoName = editBtn.addEventListener("click", function(){ 
+		editBtn.addEventListener("click", function(){ 
 			this.innerHTML="rename";
 			var oldName = todo.value
 			var renamingHTML = "<input type='text' id='renamingTextbox'></input><button id='renamingButton'>Rename</button>"
@@ -81,6 +81,11 @@ var todoApp = {
 		todoItem.appendChild(deleteBtn);
 			
 		todoContainer.appendChild(todoItem);
+		
+		//deletes task
+		deleteBtn.addEventListener("click", function(){ 
+			this.parentNode.innerHTML="";
+			})
 	},
         /*
          * Initiates on page load. Binds eventhandlers to HTML elements
