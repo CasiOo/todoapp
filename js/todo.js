@@ -59,6 +59,20 @@ var todoApp = {
 		editBtn.setAttribute("class","edit");
 		editBtn.appendChild(editBtnText);
 		
+		//edits the name of the todo
+		var editTodoName = editBtn.addEventListener("click", function(){ 
+			this.innerHTML="rename";
+			var oldName = todo.value
+			var renamingHTML = "<input type='text' id='renamingTextbox'></input><button id='renamingButton'>Rename</button>"
+			this.parentNode.innerHTML=renamingHTML;
+			document.getElementById('renamingTextbox').setAttribute("value",oldName);
+			document.getElementById('renamingButton').onclick = function(){
+				var newNameValue = document.getElementById('renamingTextbox').value;
+				var newNameHTML = '<li><input type="checkbox">'+newNameValue+'<button class="edit">Edit</button><button class="delete">Delete</button></li>'
+				this.parentNode.innerHTML=newNameHTML
+				}
+			})
+		
 		checkBox.setAttribute("type", "checkbox");
 			
 		todoItem.appendChild(checkBox);
@@ -91,7 +105,10 @@ var todoApp = {
 			var dataHandler = snapshot.val();
 			todoApp.list_of_todos = dataHandler.todoList;
 		});
-	}
+	},
+	edit_todo: function() {
+		todoApp.list_of_todos.push(todo);
+	},
 };
 
 document.onload = todoApp.init();
