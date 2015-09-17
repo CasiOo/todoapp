@@ -11,30 +11,26 @@
     <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
 </head>
 <body>
-	<div class="container">
-		<h1>To do app</h1>
-		<h3>ADD NEW TASK:</h3>
-		<p>
-			<input id="newTask" type="text" />
-			<button type="button" id="addTodoBtn">Add</button>
-		</p>
-                <p>
-                <h3>Check the todo you want to edit/delete/complete</h3>
-                </p>
-		<h3>TODO:</h3>
-		<ul id="incompleteTasks">
-			<!-- Testing DOM
-			<li><input type="checkbox">Example task 1<button class="edit">Edit</button><button class="delete">Delete</button></li>
-			<li><input type="checkbox">Example task 2<button class="edit">Edit</button><button class="delete">Delete</button></li>
-			-->
-		</ul>
-		<h3>COMPLETED:</h3>
-		<ul id="completedTasks">
-			<!-- Testing DOM
-			<li><input type="checkbox" checked>Example task 3<button class="edit">Edit</button><button class="delete">Delete</button></li>
-			<li><input type="checkbox" checked>Example task 4<button class="edit">Edit</button><button class="delete">Delete</button></li>
-			-->
-		</ul>
+	<div id="instructions" class="paper">
+			<h2 class="title">MY TODO LIST</h2>
+			<div>Add new task:
+				<input id="newTask" type="text" />
+				<button type="button" id="addTodoBtn">Add</button>
+			</div>
+            <div class="paper-row">
+                <h2 class="section-title">TO DO:</h2>
+			</div>
+            <ul>
+				<li><input type="checkbox">Example task 1<button class="edit">Edit</button><button class="delete">Delete</button></li>
+				<li><input type="checkbox">Example task 2<button class="edit">Edit</button><button class="delete">Delete</button></li>
+			</ul>
+            <div class="paper-row">
+                <h2 class="section-title">COMPLETED:</h2>
+			</div>
+            <ul>
+				<li><input type="checkbox" checked>Example task 3<button class="edit">Edit</button><button class="delete">Delete</button></li>
+				<li><input type="checkbox" checked>Example task 4<button class="edit">Edit</button><button class="delete">Delete</button></li>
+			</ul>
 	</div>
 	<script type="text/javascript" src="js/todo.js"></script>
 </body>
