@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>To do app</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style2.css" type="text/css" media="screen" charset="utf-8">
+    <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js">
+</head>
+<body>
+	<div id="instructions" class="paper">
+			<h2 id="title">MY TODO LIST</h2>
+			<div id="addNewTaskText">Add new task:
+				<input id="newTask" type="text" />
+				<button type="button" id="addTodoBtn">Add</button>
+			</div>
+			<h2 class="red">TO DO:</h2>
+			<ul id="incompleteTasks">
+				<li><input type="checkbox">Example task 1<button class="edit">Edit</button><button class="delete">Delete</button></li>
+				<li><input type="checkbox">Example task 2<button class="edit">Edit</button><button class="delete">Delete</button></li>
+			</ul>
+			</br>
+			<h2 class="red" id="completedText">COMPLETED:</h2>
+			<ul id="completedTasks">
+				<li><input type="checkbox" checked>Example task 3<button class="edit">Edit</button><button class="delete">Delete</button></li>
+				<li><input type="checkbox" checked>Example task 4<button class="edit">Edit</button><button class="delete">Delete</button></li>
+			</ul>
+	</div>
+	<script type="text/javascript" src="js/todo.js"></script>
+</body>
+</html>
